@@ -1,22 +1,22 @@
-== What is leano?
+# What is leano?
 
 Elevator pitch:
 
- FOR agile development teams, WHO are working with kanban based lean task management systems THE leano kanban
- is a lean kanban project manager, THAT adds iteration overviews and the possibility to export task information for 
+ **For** agile development teams, **who** are working with kanban based lean task management systems **the** leano kanban
+ is a lean kanban project manager, **that** adds iteration overviews and the possibility to export task information for 
  changelog integration during development.
 
- UNLIKE other kanban based products, WHO only give the opportunity to manage a kanban board OUR PRODUCT gives stake
+ **Unlike** other kanban based products, **who** only give the opportunity to manage a kanban board **our product** gives stake
  holder and customer roles the opportunity to review each iteration's progress, without digging too deep into
  task management itself, leaving the development team the freedom to exercise control over the technical decisions
  for a project. It also helps the development team to become more accountable, by exposing the entire task
  management through a feed, that CI solutions can consume and integrate into the development versions of the
  product so the end users can review what features were integrated into every current version.
 
-=== Kanban
+## Kanban
 
-=== Iteration viewer
+## Iteration viewer
 
-=== Task and Iteration feeds
+## Task and Iteration feeds
 
-== License
+# License
