@@ -1,4 +1,6 @@
 Leano::Application.routes.draw do
+  resources :kanbans
+
   resources :projects
 
   # The priority is based upon order of creation:
