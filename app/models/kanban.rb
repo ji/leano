@@ -16,6 +16,12 @@ class Kanban < ActiveRecord::Base
     self.columns.push(column)
   end
 
+  def setup_default_column_set
+    add_column_with_name("Planned")
+    add_column_with_name("In Progress")
+    add_column_with_name("Completed")
+  end
+
   def add_column_with_name(column_name)
     column = Column.new
     column.name = column_name

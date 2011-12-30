@@ -14,13 +14,10 @@ class KanbanTest < ActiveSupport::TestCase
     assert kanban_columns[1].name == "Test"
   end
   
-  test "should create default kanban" do
+  test "should create kanban with a default column set" do
     kanban = Kanban.new
+    kanban.setup_default_column_set
     kanban_columns = kanban.columns
-    
-    kanban.add_column_with_name('Planned')
-    kanban.add_column_with_name('In Progress')
-    kanban.add_column_with_name('Completed')
     
     assert kanban_columns.count == 5, 'Number of columns should be five for a default kanban.'
     assert kanban_columns[0].name == "Backlog", 'First column\'s title is not Backlog.'

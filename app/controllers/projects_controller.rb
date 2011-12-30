@@ -41,6 +41,10 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(params[:project])
+    kanban = Kanban.new
+    kanban.title = @project.title
+    kanban.project = @project
+    @project.kanban = kanban
 
     respond_to do |format|
       if @project.save
