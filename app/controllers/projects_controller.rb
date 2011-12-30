@@ -41,8 +41,12 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(params[:project])
+
     kanban = Kanban.new
     kanban.title = @project.title
+
+    kanban.setup_default_column_set if params[:default_kanban_column_set]
+
     kanban.project = @project
     @project.kanban = kanban
 

@@ -24,6 +24,14 @@ class ProjectsControllerTest < ActionController::TestCase
     assert_redirected_to project_path(assigns(:project))
   end
 
+  test "should create a project with a kanban containing a default column set" do
+    assert_difference('Project.count') do
+      post :create, project: @project.attributes, default_kanban_column_set: true
+    end
+
+    assert_redirected_to project_path(assigns(:project))
+  end
+
   test "should show project" do
     get :show, id: @project.to_param
     assert_response :success
