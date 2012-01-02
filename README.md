@@ -1,4 +1,4 @@
-# What is leano?
+# Leano - Your new agile team member.
 
 ## Elevator pitch
 
