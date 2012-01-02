@@ -1,6 +1,6 @@
 # What is leano?
 
-Elevator pitch:
+## Elevator pitch
 
  **For** agile development teams, **who** are working with kanban based lean task management systems **the** leano kanban
  is a lean kanban project manager, **that** adds iteration overviews and the possibility to export task information for 
@@ -13,10 +13,11 @@ Elevator pitch:
  management through a feed, that CI solutions can consume and integrate into the development versions of the
  product so the end users can review what features were integrated into every current version.
 
-# Benefits
+## Benefits
 
 * Never deal with stuff You don't have to care about anymore.
 * Always know in what state You are, through enhanced team accountability.
+* Dynamic, easy, performant and fun task management.
 
 ## Kanban
 
