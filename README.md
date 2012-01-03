@@ -19,6 +19,13 @@
 * Always know in what state You are, through enhanced team accountability.
 * Dynamic, easy, performant and fun task management.
 
+## What **leano** is **NOT**? (Out-Scope)
+
+* TODO List.
+* No fullfeatured agile project management system.
+* No CI solution.
+* No issue tracker.
+
 ## Kanban
 
 ## Iteration viewer
