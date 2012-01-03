@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120103161110) do
+ActiveRecord::Schema.define(:version => 20120103195427) do
 
   create_table "columns", :force => true do |t|
     t.string   "name"
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(:version => 20120103161110) do
     t.integer  "assignee"
     t.string   "priority"
     t.boolean  "blocked"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_story_tags", :force => true do |t|
+    t.integer  "user_story_id"
+    t.string   "tag_title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
