@@ -1,7 +1,8 @@
 class Kanban < ActiveRecord::Base
   belongs_to :project
   has_many :columns
- 
+  has_many :user_stories
+  
   def initialize(*params)
     super(*params)
     

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  kanban_id: 1
+  title: MyString
+  description: MyString
+  color: MyString
+  assignee: 1
+  priority: MyString
+  blocked: false
+
+two:
+  kanban_id: 1
+  title: MyString
+  description: MyString
+  color: MyString
+  assignee: 1
+  priority: MyString
+  blocked: false
