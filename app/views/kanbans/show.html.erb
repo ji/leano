@@ -3,6 +3,18 @@
 <p>
   <b>Title:</b>
   <%= @kanban.title %>
+
+<table class="kanban">
+  <!-- Kanban columns go here ... -->
+  <tr>
+    <% for column in @kanban.columns %>
+	<th><%= column.name %></th>
+	<% end %>
+  </tr>
+  <!-- User Stories go here ... -->
+  <tr>
+  </tr>
+</table>
 </p>
 
 
