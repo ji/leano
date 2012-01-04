@@ -1,4 +1,6 @@
 Leano::Application.routes.draw do
+  resources :users
+
   resources :kanbans
 
   resources :projects
