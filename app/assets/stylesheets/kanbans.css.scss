@@ -26,3 +26,28 @@ table.kanban {
 		background-color: white;
 	}
 }
+
+.kanban_column_table {
+	border-width: 0px;
+	border-spacing: 0px;
+	border-style: none;
+	border-color: gray;
+	border-collapse: collapse;
+	background-color: white;
+	
+	th {
+		border-width: 0px;
+		padding: 2px;
+		border-style: inset;
+		border-color: gray;
+		background-color: white;
+	}
+	
+	td {
+		border-width: 0px;
+		padding: 2px;
+		border-style: inset;
+		border-color: gray;
+		background-color: white;
+	}
+}

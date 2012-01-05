@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120104173938) do
+ActiveRecord::Schema.define(:version => 20120104215627) do
 
   create_table "columns", :force => true do |t|
     t.string   "name"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20120104173938) do
     t.boolean  "blocked"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "column_id"
   end
 
   create_table "user_story_tags", :force => true do |t|
@@ -55,15 +56,6 @@ ActiveRecord::Schema.define(:version => 20120104173938) do
   create_table "user_story_tasks", :force => true do |t|
     t.integer  "user_story_id"
     t.string   "task_description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "users", :force => true do |t|
-    t.string   "name"
-    t.string   "password_digest"
-    t.boolean  "is_stakeholder"
-    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
