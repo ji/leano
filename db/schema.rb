@@ -60,4 +60,13 @@ ActiveRecord::Schema.define(:version => 20120104215627) do
     t.datetime "updated_at"
   end
 
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "password_digest"
+    t.boolean  "is_stakeholder"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
 end
