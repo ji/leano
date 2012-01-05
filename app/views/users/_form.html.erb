@@ -16,8 +16,12 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :password_digest %><br />
-    <%= f.text_field :password_digest %>
+    <%= f.label :password, 'Password' %><br />
+    <%= f.password_field :password, size: 40 %>
+  </div>
+  <div>
+    <%= f.label :password_confirmation, 'Confirm' %>:
+    <%= f.password_field :password_confirmation, size: 40 %>
   </div>
   <div class="field">
     <%= f.label :is_stakeholder %><br />

@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  password_digest: MyString
+  name: dave
+  password_digest: <%= BCrypt::Password.create('secret') %>
   is_stakeholder: false
-  email: MyString
+  email: dave@me.com
 
 two:
-  name: MyString
+  name: oil
   password_digest: MyString
   is_stakeholder: false
-  email: MyString
+  email: oil@me.com
