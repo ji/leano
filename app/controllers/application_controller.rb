@@ -13,7 +13,7 @@ protected
   end
   
   
-  def authenticate
+  def check_authenticated_user
       unless @logged_user
         # unauthorized access
         redirect_to login_url, notice: "You need to login to view this content."

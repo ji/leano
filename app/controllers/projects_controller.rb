@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_filter :authenticate
+  before_filter :check_authenticated_user
   before_filter :fetch_project_by_id,         :only => [:show, :edit, :update, :destroy]
   before_filter :check_ownership,             :only => [:show, :edit, :update, :destroy]
   
