@@ -1,9 +1,13 @@
 class ProjectsController < ApplicationController
+  before_filter :authenticate
+  before_filter :fetch_project_by_id,         :only => [:show, :edit, :update, :destroy]
+  before_filter :check_ownership,             :only => [:show, :edit, :update, :destroy]
+  
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
-
+    @projects = @logged_user.projects
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @projects }
@@ -13,8 +17,6 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-    @project = Project.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @project }
@@ -34,14 +36,16 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
-    @project = Project.find(params[:id])
+    
   end
 
   # POST /projects
   # POST /projects.json
   def create
     @project = Project.new(params[:project])
-
+    
+    @project.users<< @logged_user
+    
     kanban = Kanban.new
     kanban.title = @project.title
 
@@ -49,7 +53,7 @@ class ProjectsController < ApplicationController
 
     kanban.project = @project
     @project.kanban = kanban
-
+    
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
@@ -64,8 +68,6 @@ class ProjectsController < ApplicationController
   # PUT /projects/1
   # PUT /projects/1.json
   def update
-    @project = Project.find(params[:id])
-
     respond_to do |format|
       if @project.update_attributes(params[:project])
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
@@ -80,12 +82,23 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
-    @project = Project.find(params[:id])
     @project.destroy
 
     respond_to do |format|
       format.html { redirect_to projects_url }
       format.json { head :ok }
     end
+  end
+  
+protected
+
+  def check_ownership
+    unless @project.belongs_to_user? @logged_user
+      redirect_to login_url, notice: "You don't have permission to view this content."
+    end
+  end
+  
+  def fetch_project_by_id
+    @project = Project.find(params[:id])
   end
 end
