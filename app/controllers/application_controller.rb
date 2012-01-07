@@ -16,7 +16,7 @@ protected
   def authenticate
       unless @logged_user
         # unauthorized access
-        redirect_to login_url, notice: "You need to to login to view this content."
+        redirect_to login_url, notice: "You need to login to view this content."
         return false
       end
     end
