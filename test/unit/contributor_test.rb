@@ -6,15 +6,15 @@ class ContributorTest < ActiveSupport::TestCase
     project = Project.new(title: "Project 1");
     assert project.save, "Project should save #{project.errors.full_messages}"
     
+    user = User.new(name: "dave123",
+                    password: "secret",
+                    is_stakeholder: false,
+                    email: "dave123@me.com")
+
+
+    assert user.save, "User should save #{user.errors.full_messages}"
+    
     assert_difference('project.users.count') do
-      user = User.new(name: "dave123",
-                      password: "secret",
-                      is_stakeholder: false,
-                      email: "dave123@me.com")
-
-
-      assert user.save, "User should save #{user.errors.full_messages}"
-
       project.users<< user
     end
     
@@ -28,10 +28,10 @@ class ContributorTest < ActiveSupport::TestCase
                     email: "dave123@me.com")
     assert user.save, "User should save #{user.errors.full_messages}"
     
+    project = Project.new(title: "Project 1");
+    assert project.save, "Project should save #{project.errors.full_messages}"
+    
     assert_difference('user.projects.count') do
-      project = Project.new(title: "Project 1");
-      assert project.save, "Project should save #{project.errors.full_messages}"
-      
       user.projects<< project
     end
     
@@ -52,5 +52,24 @@ class ContributorTest < ActiveSupport::TestCase
     assert user.save, "User should save #{user.errors.full_messages}"
     
     assert Contributor.count > 0, "No contributors created in Contributor model."
+  end
+  
+  test "Belongs to user" do
+    user = User.new(name: "dave123",
+                    password: "secret",
+                    is_stakeholder: false,
+                    email: "dave123@me.com")
+    assert user.save, "User should save #{user.errors.full_messages}"
+    
+    project = Project.new(title: "Project 1");
+    assert project.save, "Project should save #{project.errors.full_messages}"
+    
+    assert_difference('user.projects.count') do
+      user.projects<< project
+    end
+    
+    assert user.save, "User should save #{user.errors.full_messages}"
+    
+    assert project.belongs_to_user?(user), "project should belong to user"
   end
 end
