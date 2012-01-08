@@ -45,14 +45,8 @@ class ProjectsController < ApplicationController
     @project = Project.new(params[:project])
     
     @project.users<< @logged_user
-    
-    kanban = Kanban.new
-    kanban.title = @project.title
 
-    kanban.setup_default_column_set if params[:default_kanban_column_set]
-
-    kanban.project = @project
-    @project.kanban = kanban
+    @project.kanban.setup_default_column_set if params[:default_kanban_column_set]
     
     respond_to do |format|
       if @project.save

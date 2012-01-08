@@ -8,4 +8,13 @@ class Project < ActiveRecord::Base
   def belongs_to_user?(user)
     Contributor.count(:all, conditions: {project_id: self.id, user_id: user.id}) > 0
   end
+  
+  def initialize(*params)
+    super(*params)
+    setup_kanban
+  end
+  
+  def setup_kanban
+    self.kanban = Kanban.new(title: title)
+  end
 end
