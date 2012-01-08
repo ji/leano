@@ -85,7 +85,6 @@ class ProjectsController < ApplicationController
   end
   
 protected
-
   def check_ownership
     unless @project.belongs_to_user? @logged_user
       redirect_to login_url, notice: "You don't have permission to view this content."
