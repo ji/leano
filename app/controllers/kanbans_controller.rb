@@ -1,4 +1,8 @@
 class KanbansController < ApplicationController
+  before_filter :check_authenticated_user
+  before_filter :fetch_kanban_by_id,          :only => [:show, :edit, :update]
+  before_filter :check_ownership,             :only => [:show, :edit, :update]
+  
   # GET /kanbans
   # GET /kanbans.json
   # def index
@@ -13,8 +17,6 @@ class KanbansController < ApplicationController
   # GET /kanbans/1
   # GET /kanbans/1.json
   def show
-    @kanban = Kanban.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @kanban }
@@ -34,7 +36,7 @@ class KanbansController < ApplicationController
 
   # GET /kanbans/1/edit
   def edit
-    @kanban = Kanban.find(params[:id])
+    
   end
 
   # POST /kanbans
@@ -56,8 +58,6 @@ class KanbansController < ApplicationController
   # PUT /kanbans/1
   # PUT /kanbans/1.json
   def update
-    @kanban = Kanban.find(params[:id])
-
     respond_to do |format|
       if @kanban.update_attributes(params[:kanban])
         format.html { redirect_to @kanban, notice: 'Kanban was successfully updated.' }
@@ -80,4 +80,15 @@ class KanbansController < ApplicationController
   #     format.json { head :ok }
   #   end
   # end
+  
+protected
+  def check_ownership
+    unless @kanban.project.belongs_to_user? @logged_user
+      redirect_to login_url, notice: "You don't have permission to view this content."
+    end
+  end
+  
+  def fetch_kanban_by_id
+    @kanban = Kanban.find(params[:id])
+  end
 end

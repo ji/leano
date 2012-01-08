@@ -1,8 +1,13 @@
 require 'test_helper'
 
-class KanbansControllerTest < ActionController::TestCase
+class KanbansControllerTest < AuthenticationControllerTest
   setup do
     @kanban = kanbans(:one)
+    @authenticated_user = :one
+    @unauthnticated_user = :two
+    
+    @auth_options = {auth: true, owner: false}
+    @owner_options = {auth: true, owner: true}
   end
 
   # test "should get index" do
@@ -25,18 +30,39 @@ class KanbansControllerTest < ActionController::TestCase
   # end
 
   test "should show kanban" do
-    get :show, id: @kanban.to_param
-    assert_response :success
+    run_test_with_options(@owner_options) do |success|
+      get :show, id: @kanban.to_param
+      
+      if success
+        assert_response :success
+      else
+        assert_redirected_to login_url
+      end
+    end
   end
 
   test "should get edit" do
-    get :edit, id: @kanban.to_param
-    assert_response :success
+    run_test_with_options(@owner_options) do |success|
+      get :edit, id: @kanban.to_param
+      
+      if success
+        assert_response :success
+      else
+        assert_redirected_to login_url
+      end
+    end
   end
 
   test "should update kanban" do
-    put :update, id: @kanban.to_param, kanban: @kanban.attributes
-    assert_redirected_to kanban_path(assigns(:kanban))
+    run_test_with_options(@owner_options) do |success|
+      put :update, id: @kanban.to_param, kanban: @kanban.attributes
+      
+      if success
+        assert_redirected_to kanban_path(assigns(:kanban))
+      else
+        assert_redirected_to login_url
+      end
+    end
   end
 
   # test "should destroy kanban" do
