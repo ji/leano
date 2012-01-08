@@ -5,6 +5,8 @@ class Project < ActiveRecord::Base
   has_one :kanban
   validates_presence_of :title
   
+  before_destroy { |project| project.kanban.destroy }
+  
   def belongs_to_user?(user)
     Contributor.count(:all, conditions: {project_id: self.id, user_id: user.id}) > 0
   end
