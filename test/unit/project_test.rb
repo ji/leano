@@ -15,13 +15,13 @@ class ProjectTest < ActiveSupport::TestCase
     assert_equal project.title, project.kanban.title, "Title of associated Kanban should be equal to owning Projects one"
   end
   
-  test "should destroy associated Kanban" do
+  test "should auto destroy associated objects" do
     project = Project.new(title: "Project")
     assert project.save, "Project title is not set. #{project.errors.full_messages}"
     
     kanban_id = project.kanban.id
     
     project.destroy
-    assert Kanban.count(:all, conditions: {id: kanban_id}) == 0, "destroying a Project should also destroy associated Kanban"
+    assert Kanban.count(:all, conditions: {id: kanban_id}) == 0, "Destroying a Project should also destroy associated Kanban"
   end
 end
