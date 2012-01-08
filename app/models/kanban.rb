@@ -26,7 +26,7 @@ class Kanban < ActiveRecord::Base
   end
 
   def user_stories_for_column(column)
-    UserStory.where(column_id: column.id)
+    column.user_stories
   end
   
 protected
