@@ -21,25 +21,22 @@ class Kanban < ActiveRecord::Base
   def add_column_with_name(column_name)
     column = Column.new
     column.name = column_name
-    column.kanban_id = self.id
-    self.columns.insert(self.columns.count - 1, column)
-    self.save
+    columns.insert(self.columns.count - 1, column)
+    save
   end
 
   def user_stories_for_column(column)
-    user_stories = UserStory.where("column_id = ?", column.id)
-    return user_stories
+    UserStory.where(column_id: column.id)
   end
+  
 protected
   def setup_initial_columns
     column = Column.new
     column.name = "Backlog"
-    column.kanban_id = self.id
-    self.columns.push(column)
+    self.columns<< column
     
     column = Column.new
     column.name = "Archive"
-    column.kanban_id = self.id
-    self.columns.push(column)
+    self.columns<< column
   end
 end
