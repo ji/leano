@@ -3,6 +3,8 @@ class Kanban < ActiveRecord::Base
   has_many :columns
   has_many :user_stories
   
+  before_destroy { |kanban| kanban.columns.destroy_all }
+  
   def initialize(*params)
     super(*params)
     setup_initial_columns
@@ -31,12 +33,10 @@ class Kanban < ActiveRecord::Base
   
 protected
   def setup_initial_columns
-    column = Column.new
-    column.name = "Backlog"
+    column = Column.new(name: "Backlog")
     self.columns<< column
     
-    column = Column.new
-    column.name = "Archive"
+    column = Column.new(name: "Archive")
     self.columns<< column
   end
 end

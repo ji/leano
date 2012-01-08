@@ -50,6 +50,15 @@ class KanbanTest < ActiveSupport::TestCase
   test "should auto create default coloumns" do
     kanban = Kanban.new()
     
-    assert kanban.columns.count > 0, "New Kanban should come with at least one column"
+    assert kanban.columns.count == 2, "New Kanban should come with at least one column"
+  end
+  
+  test "should auto destroy associated objects" do
+    kanban = Kanban.new(title: "Kanban")
+    kanban.save
+    kanban_id = kanban.id
+    kanban.destroy
+    
+    assert Column.count(:all, conditions: {kanban_id: kanban_id}) == 0, "Destroying a Kanban should also destroy all columns but found #{Column.where(kanban_id: kanban_id)}"
   end
 end
