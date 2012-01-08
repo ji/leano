@@ -46,4 +46,10 @@ class KanbanTest < ActiveSupport::TestCase
     assert target_column_user_stories.count == 1, "Only one user story expected to be in the target array. #{target_column_user_stories.count} found instead."
     assert target_column_user_stories.first == user_story, "The user story contained in the result array does not belong to the target column."
   end
+  
+  test "should auto create default coloumns" do
+    kanban = Kanban.new()
+    
+    assert kanban.columns.count > 0, "New Kanban should come with at least one column"
+  end
 end
