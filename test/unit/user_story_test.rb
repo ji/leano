@@ -10,7 +10,6 @@ class UserStoryTest < ActiveSupport::TestCase
     
     user_story_id = user_story.id
     user_story.destroy
-    assert UserStoryTag.count(:all, conditions: {user_story_id: user_story_id}) == 0, "Destroying a user story should auto destroy associated tags"
     assert UserStoryTask.count(:all, conditions: {user_story_id: user_story_id}) == 0, "Destroying a user story should auto destroy associated tasks"
   end
 end

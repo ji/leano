@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120106084612) do
+ActiveRecord::Schema.define(:version => 20120115150023) do
 
   create_table "columns", :force => true do |t|
     t.string   "name"
@@ -53,11 +53,16 @@ ActiveRecord::Schema.define(:version => 20120106084612) do
     t.integer  "column_id"
   end
 
+  create_table "user_stories_user_story_tags", :force => true do |t|
+    t.integer "user_story_id"
+    t.integer "user_story_tag_id"
+  end
+
   create_table "user_story_tags", :force => true do |t|
-    t.integer  "user_story_id"
     t.string   "tag_title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "project_id"
   end
 
   create_table "user_story_tasks", :force => true do |t|
