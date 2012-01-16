@@ -19,3 +19,11 @@
 
 # Ignore OpenDiff derivate files.
 .orig
+
+# Ignore Mac OS X ds store.
+.DS_Store
+
+# Ignore vim's ~ backups.
+*~
+*.swp
+
