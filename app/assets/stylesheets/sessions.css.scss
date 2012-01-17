@@ -1,3 +1,27 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// login form widget's dimensions.
+$width: 400px;
+$height: 175px;
+
+.login-form-widget {
+  background: rgb(255, 255, 255);
+  width: $width;
+  height: $height;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  margin-left: -$width / 2;
+}
+
+.login-form-widget-shadow {
+  width: $width;
+  height: $height;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  margin-left: -(($width + 15px)/ 2);
+}
+

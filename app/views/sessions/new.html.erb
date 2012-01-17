@@ -1,23 +1,36 @@
-<div class="depot_form">
-<% if flash[:alert] %>
-<p id="notice">
-<%= flash[:alert] %></p>
-<% end %>
-
-<%= form_tag do %>
-<fieldset>
-<legend>Please Log In</legend>
-<div>
-<label for="name">Name:</label>
-<%= text_field_tag :name, params[:name] %>
-</div>
-<div>
-<label for="password">Password:</label>
-<%= password_field_tag :password, params[:password] %>
-</div>
-<div>
-<%= submit_tag "Login" %>
-</div>
-</fieldset>
-<% end %>
+<div class="login-form">
+  <% if flash[:alert] %>
+    <p id="notice">
+    <%= flash[:alert] %></p>
+  <% end %>
+  <div class="ui-widget-overlay"></div>
+  <div class="login-form-widget-shadow  ui-widget-shadow ui-corner-all"></div>
+  <div class="login-form-widget ui-widget ui-widget-content ui-corner-all">
+    <%= form_tag do %>
+      <div style="margin-left:10px; margin-top:10px; margin-bottom:10px;">
+        Please Log In<br/><br/>
+        <table style="width:100%">
+          <tr>
+            <td>
+              <label for="name">Username:</label>
+            </td>
+            <td>
+              <%= text_field_tag :name, params[:name] %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="password">Password:</label>
+            </td>
+            <td>
+              <%= password_field_tag :password, params[:password] %>
+            </td>
+          </tr>
+        </table>
+        <div style="position: relative; left: 50%; top: 20px; margin-left: -34px;">
+          <%= submit_tag "Login", id: "login-button" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
