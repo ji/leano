@@ -1,29 +1,29 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Title:</b>
-  <%= @kanban.title %>
+<b>Title:</b>
+<%= @kanban.title %>
 
 <table class="kanban">
   <!-- Kanban columns go here ... -->
   <tr>
     <% for column in @kanban.columns %>
-	<th><%= column.name %></th>
-	<% end %>
+      <th><%= column.name %></th>
+    <% end %>
   </tr>
   <!-- User Stories go here ... -->
-  	<% for column in @kanban.columns %>
-	<table class="kanban_column_table">
-		<tr>
-		<% column_user_stories = @kanban.user_stories_for_column(column) %>
-		<% for current_user_story in column_user_stories %>
-			<td>
-				<%= render :partial => 'user_story', :locals => { :user_story => current_user_story } %>
-			</td>
-		<% end %>
-		</tr>
-	</table>
-	<% end %>
+  <% for column in @kanban.columns %>
+    <table class="kanban_column_table">
+      <tr>
+        <% column_user_stories = @kanban.user_stories_for_column(column) %>
+        <% for current_user_story in column_user_stories %>
+          <td>
+            <%= render :partial => 'user_story', :locals => { :user_story => current_user_story } %>
+          </td>
+        <% end %>
+      </tr>
+    </table>
+  <% end %>
   <tr>
   </tr>
 </table>
