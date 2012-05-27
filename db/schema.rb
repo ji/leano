@@ -15,29 +15,29 @@ ActiveRecord::Schema.define(:version => 20120115150023) do
 
   create_table "columns", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer  "kanban_id"
   end
 
   create_table "contributors", :force => true do |t|
     t.integer  "project_id"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "kanbans", :force => true do |t|
     t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer  "project_id"
   end
 
   create_table "projects", :force => true do |t|
     t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "user_stories", :force => true do |t|
@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(:version => 20120115150023) do
     t.integer  "assignee"
     t.string   "priority"
     t.boolean  "blocked"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "column_id"
   end
 
@@ -60,16 +60,16 @@ ActiveRecord::Schema.define(:version => 20120115150023) do
 
   create_table "user_story_tags", :force => true do |t|
     t.string   "tag_title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer  "project_id"
   end
 
   create_table "user_story_tasks", :force => true do |t|
     t.integer  "user_story_id"
     t.string   "task_description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -77,8 +77,8 @@ ActiveRecord::Schema.define(:version => 20120115150023) do
     t.string   "password_digest"
     t.boolean  "is_stakeholder"
     t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
 end
