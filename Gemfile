@@ -37,3 +37,4 @@ group :test do
 end
 
 gem 'pg'
+gem 'simple_form'
