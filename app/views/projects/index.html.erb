@@ -12,7 +12,7 @@
   <tbody>
     <% @projects.each do |project| %>
       <tr>
-        <td><%= link_to "#{project.title}", project %></td>
+        <td><%= link_to "#{project.title}", project.kanban %></td>
         <td><%= project.owner_name %></td>
         <td><%= project.contributors.count %></td>
         <td><%= link_to 'Destroy', project, method: :delete, class: 'btn btn-mini btn-danger' %></td>
