@@ -12,6 +12,12 @@ class Project < ActiveRecord::Base
     project.user_story_tags.destroy_all
   }
   
+  def owner_name
+    contributor = Contributor.find_by_project_id(self.id)
+    owner = User.find_by_id(contributor.user_id)
+    owner.name
+  end
+
   def belongs_to_user?(user)
     Contributor.count(:all, conditions: {project_id: self.id, user_id: user.id}) > 0
   end
