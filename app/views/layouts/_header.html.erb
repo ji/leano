@@ -2,23 +2,33 @@
   <div class="navbar-inner">
     <div class="container">
       <a class="brand" href="#">leano</a>
-      <ul class="nav">
-        <% if current_user != nil %>
+      <% if current_user != nil %>
+        
+        <!-- Left nav -->
+        <ul class="nav">
           <!-- Projects -->
           <li class="active">
             <a href="<%= projects_path %>">Projects</a>
           </li>
           <!-- End Projects -->
+        </ul>
+        <!-- End Left nav -->
+
+        <!-- Right nav -->
+        <ul class="nav pull-right">     
+          <li class="divider-vertical"></li>
           <!-- User menu -->
           <li class="dropdown">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown"><%= current_user.name %> <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><a href="<%= logout_path %>">Logout</a></li>
             </ul>
-          </li>
-        <% end %>
-        <!-- End User menu -->
-      </ul>
+          </li>    
+          <!-- End User menu -->
+        </ul>
+        <!-- End Right nav -->
+      
+      <% end %>
     </div>
   </div>
 </div>
