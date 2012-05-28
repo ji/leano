@@ -4,8 +4,10 @@ Leano::Application.routes.draw do
   controller :sessions do
     get 'login' => :new
     post 'login' => :create
-    delete 'logout' => :destroy
+    get 'logout' => :destroy, as: 'logout'
   end
+
+  resources :sessions
 
   resources :users
 
