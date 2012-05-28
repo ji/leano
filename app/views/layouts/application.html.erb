@@ -7,15 +7,15 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="brand" href="#">leano</a>        
-        </div>
-      </div>
-    </div>
-    <div class="container">
+    <!-- Render HEADER -->
+    <%= render partial: 'layouts/header' %>
+    <!-- End HEADER -->
+
+    <!-- Body container -->
+   <div class="container">
       <%= yield %>
     </div>
+    <!-- End Body container -->
+
   </body>
 </html>
